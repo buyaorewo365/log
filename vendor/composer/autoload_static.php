@@ -6,9 +6,25 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit409eda71eb9c928ca49dd89b23cb8e92
 {
+    public static $prefixLengthsPsr4 = array (
+        'B' => 
+        array (
+            'Banjulog\\' => 9,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Banjulog\\' => 
+        array (
+            0 => '/log/src/Seaslog',
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit409eda71eb9c928ca49dd89b23cb8e92::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit409eda71eb9c928ca49dd89b23cb8e92::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

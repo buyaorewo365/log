@@ -6,7 +6,7 @@
  * email 313535835@qq.com
  */
 
-namespace Seaslog;
+namespace Banjulog;
 
 
 class Logger
