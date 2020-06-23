@@ -1,0 +1,14 @@
+{
+    "name": "banju/log",
+    "description": "this is a log sdk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "liyanjun",
+            "email": "313535835@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
