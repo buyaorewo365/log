@@ -3,9 +3,9 @@
 # 调用方式
 require('banjulog/autoload.php');
 use BanjuLog\log;
-#创建日志对象
+# 创建日志对象
 $obj=new log();
-#数据结构
+# 数据结构
 $data=[
     'action'=>'111',
     'bhv_type'=>'22',
@@ -22,18 +22,18 @@ $data=[
     'env'=>'103',
     'plates'=>'104'
 ];
-#设置基础路劲
+# 设置基础路劲
 $res=$obj->setBasePath('/data/banjulog')
-#设置数据
+# 设置数据
 ->setData($data)
-#设置项目目录
+# 设置项目目录
 ->setProject('test')
-#设置日志错误级别
+# 设置日志错误级别
 ->setLevel('debug')
-#设置时间戳格式
+# 设置时间戳格式
 ->setDateFormat('YmdHis')
-#写入日志
+# 写入日志
 ->write();
-#如果返回true,写入成功
+# 如果返回true,写入成功
 var_dump($res);
-#说明:set开头方法为设置,get开头方法为获取,如果不设置为默认php配置
+# 说明:set开头方法为设置,get开头方法为获取,如果不设置为默认php配置
