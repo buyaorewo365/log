@@ -58,7 +58,8 @@ class log implements logInterface
         SeasLog::setDatetimeFormat ( $this->_date_format);
         return $this;
     }
-    public function getDataFormat()
+    //获取时间format
+    public function getDateFormat()
     {
         return $this->_date_format;
     }
@@ -95,7 +96,7 @@ class log implements logInterface
     	return $this;
     }
     //获取日志级别
-    public function getLevel($level)
+    public function getLevel()
     {
     	return $this->_level;
     }
@@ -146,7 +147,7 @@ class log implements logInterface
     	return $this->_data;
     }
     //写日志
-    public function write($is_request=false)
+    public function write()
     {
     	$level=$this->_level;
     	if(!$this->checkLevelType($level)){
@@ -165,6 +166,6 @@ class log implements logInterface
     //创建目录
     private function makedir($path)
     {
-    	return  is_dir ( $dir ) or make_dirs(dirname( $dir )) and  mkdir ( $dir , 0777);
+    	return  is_dir ( $path ) or $this->makedir(dirname( $path )) and  mkdir ( $path , 0777);
     }
 }

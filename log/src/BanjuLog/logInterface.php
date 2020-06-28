@@ -16,6 +16,6 @@ interface logInterface{
     public function setLevel($level);
     public function getLevel();
     public function setDateFormat($format);
-    public function getDateFormat($format);
+    public function getDateFormat();
 
 }
