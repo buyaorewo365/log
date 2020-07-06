@@ -11,6 +11,8 @@ interface logInterface{
     public function getBasePath();
     public function setProject($porject);
     public function getProject();
+    public function setModule($module);
+    public function getModule();
     public function setData($data);
     public function getData();
     public function setLevel($level);

@@ -11,9 +11,10 @@ class log implements logInterface
 {
 	const ALLTYPE = ['debug','info','notice','warning','error','critical','alert','emergency'];
  	private $_data=[];
-    private $_level='info';
-    private $_project='default';
     private $_path='/data/logs/seaslog';
+    private $_project='default';
+    private $_module='logger';
+    private $_level='info';
     private $_date_format= 'Y-m-d H:i:s';
     public function __construct(){
     	// 参数  字段类型    描述  Nullable
@@ -35,7 +36,6 @@ class log implements logInterface
             'action'=>'',
             'bhv_type'=>'',
             'user_type'=>'',
-            'bhv_type'=>'',
             'user_id'=>'',
             'act_obj'=>'',
             'obj_type'=>'',
@@ -66,11 +66,7 @@ class log implements logInterface
     //设置日志目录
     public function setBasePath($path)
     {
-    	if(!is_dir($path)){
-    		$this->makedir($path);
-    	}
     	$this->_path=$path;
-        SeasLog::setBasePath ($this->_path);
     	return $this;
     }
     //获取日志目录
@@ -99,6 +95,16 @@ class log implements logInterface
     public function getLevel()
     {
     	return $this->_level;
+    }
+    //设置日志模块
+    public function setModule($module)
+    {
+        $this->_module=$module;
+        return $this;
+    }
+    //获取日志模块
+    public function getModule(){
+        return $this->_module;
     }
     //设置日志数据
     public function setData($data)
@@ -149,11 +155,19 @@ class log implements logInterface
     //写日志
     public function write()
     {
+        //设置项目路劲,创建目录
+        $path=$this->_path.'/'.$this->_project;
+        if(!is_dir($path)){
+            $this->makedir($path);
+        }
+        SeasLog::setBasePath($path);
+        //设置文件级别
     	$level=$this->_level;
     	if(!$this->checkLevelType($level)){
     		return false;
     	}
-    	Seaslog::$level(json_encode($this->_data),[],$this->_project);
+        //设置模块写入日志
+    	Seaslog::$level(json_encode($this->_data),[],$this->_module);
     	return true;
     }
     //检测错误级别
