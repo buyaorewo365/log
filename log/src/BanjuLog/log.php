@@ -26,6 +26,7 @@ class log implements logInterface
         // obj_type    string  行为对象类型，默认为item（由元信息类定义） 否
         // event   string  具体操作事件内容    否
         // trace_id    string  如果发生行为的物品是推荐引擎引导，取值为同推荐列表一起返回的trace_id  是
+        // uuid    string  前端生成的唯一id
         // bhv_datetime    string  行为时间,字符串e格式 ‘yyyy-MM-dd HH:mm:ss’   否
         // pos_type    string  行为发生的位置类型， ll：经纬度格式的位置信息    是
         // position    string  行为发生的位置，根据pos_type有不同的取值格式： 是
@@ -41,6 +42,7 @@ class log implements logInterface
             'obj_type'=>'',
             'event'=>'',
             'trace_id'=>'',
+            'uuid'=>'',
             'bhv_datetime'=>'',
             'pos_type'=>'',
             'position'=>'',
@@ -129,6 +131,12 @@ class log implements logInterface
         }
         if(isset($data['event'])){
             $this->_data['event']=$data['event'];
+        }
+        if(isset($data['trace_id'])){
+            $this->_data['trace_id']=$data['trace_id'];
+        }
+        if(isset($data['uuid'])){
+            $this->_data['uuid']=$data['uuid'];
         }
         if(isset($data['bhv_datetime'])){
             $this->_data['bhv_datetime']=$data['bhv_datetime'];
